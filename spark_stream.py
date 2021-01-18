@@ -18,7 +18,6 @@ def preprocessing(lines):
     words = words.withColumn('word', F.regexp_replace('word', '#', ''))
     words = words.withColumn('word', F.regexp_replace('word', 'RT', ''))
     words = words.withColumn('word', F.regexp_replace('word', ':', ''))
-    # words = add_time(words, lines)
     return words
 
     # whitespace = re.compile(r"\s+")
@@ -72,7 +71,7 @@ if __name__ == "__main__":
         .option("format", "append")\
         .option("path", "./res")\
         .option("checkpointLocation", "./res/check")\
-        .trigger(processingTime='200 seconds')\
+        .trigger(processingTime='600 seconds')\
         .start()
     query.awaitTermination()
 

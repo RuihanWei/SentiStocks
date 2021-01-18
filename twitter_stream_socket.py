@@ -25,7 +25,7 @@ class TweetsListener(StreamListener):
       msg = json.loads( data )
       print("new message")
       # if tweet is longer than 140 characters
-      ts = time.strftime('%Y-%m-%d-%H', time.strptime(msg['created_at'],'%a %b %d %H:%M:%S +0000 %Y'))
+      ts = time.strftime('%Y-%m-%d %H:%M', time.strptime(msg['created_at'],'%a %b %d %H:%M:%S +0000 %Y'))
       time_msg = "<time_encoding_sentistock_101>" + ts + "</time_encoding_sentistock_101>"
       
       if "extended_tweet" in msg:
